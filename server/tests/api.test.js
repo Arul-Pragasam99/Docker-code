@@ -3,19 +3,35 @@ const express=require("express")
 
 const app=express()
 
-app.get("/test",(req,res)=>{
-res.json({message:"api working"})
+app.get("/",(req,res)=>{
+res.json({message:"api running"})
 })
 
-describe("api test",()=>{
+describe("api tests",()=>{
+
+test("should return 200 status",async()=>{
+const res=await request(app).get("/")
+expect(res.statusCode).toBe(200)
+})
+
+test("should return json",async()=>{
+const res=await request(app).get("/")
+expect(res.headers["content-type"]).toMatch(/json/)
+})
 
 test("should return message",async()=>{
+const res=await request(app).get("/")
+expect(res.body.message).toBe("api running")
+})
 
-const res=await request(app).get("/test")
+test("route should exist",async()=>{
+const res=await request(app).get("/")
+expect(res.body).toHaveProperty("message")
+})
 
-expect(res.statusCode).toBe(200)
-expect(res.body.message).toBe("api working")
-
+test("response should not be null",async()=>{
+const res=await request(app).get("/")
+expect(res.body).not.toBeNull()
 })
 
 })
