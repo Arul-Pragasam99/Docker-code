@@ -3,6 +3,8 @@ name: Node CI
 on:
   push:
     branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
   build:
@@ -13,7 +15,6 @@ jobs:
         working-directory: server
 
     steps:
-
       - name: checkout code
         uses: actions/checkout@v4
 
@@ -26,7 +27,7 @@ jobs:
         run: npm install
 
       - name: run eslint
-        run: npm run lint
+        run: npx eslint .
 
       - name: run tests
         run: npm test
