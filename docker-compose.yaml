@@ -1,5 +1,4 @@
 services:
-
   mongo:
     image: mongo:6
     container_name: mongodb_container
@@ -10,10 +9,20 @@ services:
     build: ./server
     container_name: node_backend
     ports:
-      - "5000:5000"
+      - "5001:5001"
     environment:
       MONGO_URI: mongodb://mongo:27017/taskdb
+      PORT: 5001
       JWT_SECRET: mysecret
-      PORT: 5000
     depends_on:
       - mongo
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - server

@@ -1,16 +1,21 @@
 const express=require("express")
-const mongoose=require("mongoose")
 
 const app=express()
+const port=5001
+
+console.log("fresh server loaded")
 
 app.get("/",(req,res)=>{
-res.json({message:"api running"})
+res.send("root working")
 })
 
-if(process.env.NODE_ENV!=="test"){
-app.listen(5000,()=>{
-console.log("server running")
+app.get("/health",(req,res)=>{
+res.json({
+status:"ok",
+message:"server is healthy"
 })
-}
+})
 
-module.exports=app
+app.listen(port,()=>{
+console.log("server running on port "+port)
+})
