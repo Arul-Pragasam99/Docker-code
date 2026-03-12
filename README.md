@@ -1,175 +1,335 @@
-# Docker code — week by week process
+# Docker Code – DevOps Deployment Project
 
-## week 1 — linux and git foundations
-
-### objective
-build the basic devops foundation using linux commands, git workflow, and github collaboration.
-
-### tasks completed
-- practiced essential linux commands such as:
-  - `ls -la`
-  - `pwd`
-  - `cd`
-  - `mkdir`
-  - `cat`
-  - `grep`
-  - `chmod`
-  - `ps aux`
-  - `curl`
-  - `kill`
-- documented the commands in a cheatsheet
-- initialized a git repository
-- created branch structure:
-  - `main`
-  - `develop`
-  - `feature/...`
-- used conventional commit messages such as:
-  - `feat: add backend setup`
-  - `fix: resolve route issue`
-  - `docs: update readme`
-- created and merged pull requests on github
-
-### output
-- linux command practice completed
-- git branching workflow completed
-- github repository initialized and maintained properly
+This project demonstrates a complete DevOps workflow for deploying a Node.js backend application. The application is containerized using Docker, routed through an Nginx reverse proxy, deployed to the cloud using Render, monitored using UptimeRobot, and integrated with a CI/CD pipeline using GitHub Actions.
 
 ---
 
-## week 2 — docker and containerization
+# Project Overview
 
-### objective
-containerize the backend and understand service orchestration using docker and docker compose.
+The goal of this project is to implement a production-ready backend deployment pipeline using modern DevOps tools and practices.
 
-### tasks completed
-- installed docker desktop
-- verified docker installation using:
-  - `docker --version`
-  - `docker compose version`
-- created a simple node backend server
-- wrote `server.js` for backend testing
-- created `Dockerfile` for the backend container
-- created `docker-compose.yml` for service setup
-- configured mongodb service in docker compose
-- tested backend container locally
-- verified backend using browser and localhost routes
+The system includes:
 
-### important files
-- `server/Dockerfile`
-- `server/server.js`
-- `docker-compose.yml`
-
-### output
-- backend container built successfully
-- docker compose used to start services
-- local containerized backend tested successfully
+• Node.js Express backend  
+• Docker containerization  
+• Nginx reverse proxy routing  
+• Cloud deployment using Render  
+• CI/CD pipeline using GitHub Actions  
+• Application health monitoring using UptimeRobot  
 
 ---
 
-## week 3 — testing, linting, and ci pipeline
+# Technology Stack
 
-### objective
-add code quality checks, automated testing, and continuous integration.
+Backend  
+• Node.js  
+• Express.js  
 
-### tasks completed
-- installed jest and supertest
-- wrote 5 test cases for backend api
-- generated test coverage report
-- achieved more than 60 percent coverage
-- installed and configured eslint
-- created `eslint.config.js`
-- confirmed linting works using:
-  - `npm run lint`
-- created github actions workflow
-- configured pipeline to run on every push
-- automated these steps in ci:
-  - install dependencies
-  - run eslint
-  - run jest tests with coverage
-
-### important files
-- `server/tests/api.test.js`
-- `server/eslint.config.js`
-- `.github/workflows/ci.yml`
-
-### output
-- 5 tests passed
-- coverage achieved above required level
-- github actions pipeline executed successfully
+DevOps Tools  
+• Docker  
+• Docker Compose  
+• Nginx  
+• GitHub Actions  
+• Render Cloud Platform  
+• UptimeRobot Monitoring  
 
 ---
 
-## week 4 — cloud deployment, nginx, monitoring, and cicd
+# Project Structure
 
-### objective
-deploy the backend to cloud, configure reverse proxy, add health checks, and enable monitoring.
-
-### tasks completed
-- updated backend for production deployment
-- added root route:
-  - `/`
-- added health check route:
-  - `/health`
-- updated server to use:
-  - `process.env.PORT || 5001`
-- created nginx reverse proxy configuration
-- configured nginx to forward traffic to backend
-- tested local reverse proxy using:
-  - `http://localhost/health`
-- pushed final code to github
-- deployed the backend to render
-- configured environment variable:
-  - `PORT`
-- verified deployed url and health endpoint
-- set up uptime monitoring using uptimerobot
-- connected monitoring to:
-  - deployed `/health` endpoint
-- verified ci/cd flow:
-  - push to github
-  - github actions runs lint and tests
-  - render auto deploys latest code
-
-### important files
-- `server/server.js`
-- `nginx/nginx.conf`
-- `docker-compose.yml`
-- `.github/workflows/ci.yml`
-
-### deployment url
-- `https://docker-code-ktf8.onrender.com`
-
-### health endpoint
-- `https://docker-code-ktf8.onrender.com/health`
-
-### output
-- backend deployed successfully on render
-- nginx reverse proxy configured successfully
-- uptime monitoring enabled
-- ci/cd workflow completed
+```
+Docker code
+│
+├── server
+│   ├── server.js
+│   ├── package.json
+│   └── tests
+│
+├── nginx
+│   └── nginx.conf
+│
+├── docker-compose.yml
+│
+├── .github
+│   └── workflows
+│       └── ci.yml
+│
+└── README.md
+```
 
 ---
 
-## final project summary
+# Week-1 – Linux and Git Foundations
 
-### technologies used
-- node.js
-- express.js
-- docker
-- docker compose
-- nginx
-- jest
-- eslint
-- github actions
-- render
-- uptimerobot
+Objectives:
 
-### final workflow
-user request
-→ nginx reverse proxy
-→ node backend
-→ health endpoint monitoring
-→ github actions ci
-→ render auto deployment
+• Practice essential Linux commands  
+• Setup Git repository and branch workflow  
+• Follow conventional commit standards  
 
-### final result
-the project was completed week by week, starting from linux and git basics, then progressing through docker containerization, testing and ci integration, and finally cloud deployment, reverse proxy setup, monitoring, and ci/cd automation.
+Tasks Completed:
+
+• Used Linux commands such as  
+  `ls`, `pwd`, `cd`, `mkdir`, `cat`, `grep`, `chmod`, `ps`, `curl`, `kill`
+
+• Initialized Git repository
+
+• Created branch workflow
+
+```
+main
+develop
+feature/*
+```
+
+• Created and merged Pull Requests
+
+Output:
+
+A structured Git workflow with proper commits and branch management.
+
+---
+
+# Week-2 – Docker and Containerization
+
+Objectives:
+
+• Containerize backend using Docker  
+• Manage services using Docker Compose  
+
+Tasks Completed:
+
+• Installed Docker Desktop  
+• Verified Docker installation  
+
+```
+docker --version
+docker compose version
+```
+
+• Created backend server using Express  
+• Created `Dockerfile` for backend container  
+• Created `docker-compose.yml` for services  
+
+Services configured:
+
+• Node backend  
+• MongoDB database  
+• Nginx reverse proxy  
+
+Output:
+
+Application successfully containerized and tested locally using Docker.
+
+---
+
+# Week-3 – Testing and CI Pipeline
+
+Objectives:
+
+• Implement automated testing  
+• Add code linting  
+• Setup CI pipeline  
+
+Tasks Completed:
+
+• Installed Jest and Supertest  
+• Created 5 unit tests for API routes  
+• Generated test coverage report  
+
+Coverage achieved:
+
+```
+Statements: > 70%
+```
+
+• Installed ESLint for code linting  
+• Created GitHub Actions workflow  
+
+CI pipeline automatically performs:
+
+```
+Install dependencies
+Run ESLint
+Run Jest tests
+```
+
+Output:
+
+CI pipeline successfully running on every Git push.
+
+---
+
+# Week-4 – Cloud Deployment and Monitoring
+
+Objectives:
+
+• Deploy application to cloud  
+• Configure reverse proxy  
+• Add monitoring system  
+• Enable CI/CD workflow  
+
+Tasks Completed:
+
+• Implemented `/health` endpoint for monitoring
+
+Example response:
+
+```json
+{
+  "status": "ok",
+  "message": "server is healthy"
+}
+```
+
+• Configured Nginx reverse proxy
+
+Request flow:
+
+```
+User → Nginx → Node.js Backend
+```
+
+• Deployed backend to Render cloud platform
+
+Deployment URL:
+
+```
+https://docker-code-0haz.onrender.com
+```
+
+Health Endpoint:
+
+```
+https://docker-code-0haz.onrender.com/health
+```
+
+• Configured environment variables on Render
+
+Example variables:
+
+```
+PORT
+JWT_SECRET
+MONGO_URI
+```
+
+• Configured monitoring using UptimeRobot
+
+Monitoring endpoint:
+
+```
+https://docker-code-0haz.onrender.com/health
+```
+
+Monitoring interval:
+
+```
+5 minutes
+```
+
+---
+
+# Docker Setup (Local Development)
+
+Start all containers:
+
+```
+docker compose up --build
+```
+
+Access application locally:
+
+```
+http://localhost/health
+```
+
+---
+
+# CI/CD Pipeline
+
+The project implements a CI/CD workflow using GitHub Actions.
+
+Pipeline Flow:
+
+```
+Git Push
+   ↓
+GitHub Actions
+   ↓
+Install Dependencies
+   ↓
+Run ESLint
+   ↓
+Run Jest Tests
+   ↓
+Render Auto Deployment
+```
+
+Workflow file:
+
+```
+.github/workflows/ci.yml
+```
+
+---
+
+# DevOps Architecture
+
+```
+User Request
+     ↓
+Nginx Reverse Proxy
+     ↓
+Node.js Express Server
+     ↓
+Health Endpoint Monitoring
+     ↓
+UptimeRobot Status Checks
+```
+
+Deployment Pipeline:
+
+```
+Developer Push
+     ↓
+GitHub Actions CI
+     ↓
+Automated Tests
+     ↓
+Render Cloud Deployment
+```
+
+---
+
+# Monitoring
+
+Application uptime monitoring is configured using UptimeRobot.
+
+Monitoring checks the `/health` endpoint to ensure the application is running.
+
+Example monitoring URL:
+
+```
+https://docker-code-0haz.onrender.com/health
+```
+
+---
+
+# Final Outcome
+
+The project successfully demonstrates a complete DevOps pipeline including:
+
+• Containerization using Docker  
+• Reverse proxy configuration using Nginx  
+• Automated testing and linting  
+• CI/CD pipeline using GitHub Actions  
+• Cloud deployment using Render  
+• Application monitoring using UptimeRobot  
+
+---
+
+# Author
+
+DevOps Internship Project  
+Docker Code Deployment System
