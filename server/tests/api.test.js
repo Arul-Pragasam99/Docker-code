@@ -1,11 +1,5 @@
 const request=require("supertest")
-const express=require("express")
-
-const app=express()
-
-app.get("/",(req,res)=>{
-res.json({message:"api running"})
-})
+const app=require("../server")
 
 describe("api tests",()=>{
 
