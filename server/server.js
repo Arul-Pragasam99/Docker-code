@@ -1,21 +1,26 @@
 const express=require("express")
 
 const app=express()
-const port=5001
 
-console.log("fresh server loaded")
+const port=process.env.PORT||5001
+
+console.log("server starting")
 
 app.get("/",(req,res)=>{
-res.send("root working")
+res.status(200).send("server running")
 })
 
 app.get("/health",(req,res)=>{
-res.json({
+res.status(200).json({
 status:"ok",
-message:"server is healthy"
+message:"server is healthy",
+timestamp:new Date().toISOString(),
+uptime:process.uptime()
 })
 })
 
 app.listen(port,()=>{
 console.log("server running on port "+port)
 })
+
+module.exports=app
