@@ -1,12 +1,19 @@
-const http=require("http")
+const express=require("express")
+const mongoose=require("mongoose")
 
+const app=express()
 const port=5000
 
-const server=http.createServer((req,res)=>{
-res.writeHead(200,{"Content-Type":"text/plain"})
-res.end("server running inside docker")
+const db=process.env.MONGO_URI||"mongodb://mongo:27017/taskdb"
+
+mongoose.connect(db)
+.then(()=>console.log("database connected"))
+.catch(err=>console.log(err))
+
+app.get("/",(req,res)=>{
+res.send("node backend running in docker")
 })
 
-server.listen(port,()=>{
+app.listen(port,()=>{
 console.log("server running on port "+port)
 })
